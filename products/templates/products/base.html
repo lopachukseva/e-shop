@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="{% static 'vendor/img/shop.png' %}">
 
     <title>{{ title }}</title>
 
@@ -45,7 +46,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="">Профиль</a>
+                            <a class="dropdown-item" href="{% url 'profile' %}">Профиль</a>
                         </li>
                         <li><a class="dropdown-item" href="">Заказы</a></li>
                         {% if user.is_staff or user.is_superuser %}
