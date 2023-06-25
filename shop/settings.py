@@ -111,7 +111,6 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -124,3 +123,20 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = "/users/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+
+# Mail
+
+# EMAIL_HOST = ""
+# EMAIL_PORT = ""
+# EMAIL_HOST_USER = ""
+# EMAIL_HOST_PASSWORD = ""
+# EMAIL_USE_TLS = ""
+# EMAIL_USE_SSL = ""
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
+
+
