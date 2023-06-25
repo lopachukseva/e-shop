@@ -3,23 +3,25 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
+from common.views import TitleMixin
 from products.models import ProductCategory, Product, Basket
 from users.models import User
 
 
-class IndexView(TemplateView):
+class IndexView(TitleMixin, TemplateView):
     template_name = "products/index.html"
+    title = "Store"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Store"
         return context
 
 
-class ProductsListView(ListView):
+class ProductsListView(TitleMixin, ListView):
     model = Product
     template_name = "products/products.html"
     context_object_name = "products"
+    title = "Каталог"
 
     paginate_by = 3
 
@@ -30,7 +32,6 @@ class ProductsListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Catalog"
         context["categories"] = ProductCategory.objects.all()
         return context
 
