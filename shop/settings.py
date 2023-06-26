@@ -64,6 +64,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "products.context_processors.basket",
             ],
         },
     },
@@ -129,7 +130,6 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 # Mail
-
 # EMAIL_HOST = ""
 # EMAIL_PORT = ""
 # EMAIL_HOST_USER = ""
@@ -138,4 +138,6 @@ LOGOUT_REDIRECT_URL = "/"
 # EMAIL_USE_SSL = ""
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
+
+# For develop. In production use real smtp server
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

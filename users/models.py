@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.urls import reverse
 from django.conf import settings
 from django.utils.timezone import now
+from django.conf import settings
 
 
 class User(AbstractUser):
@@ -18,7 +19,7 @@ class EmailVerification(models.Model):
     expire_at = models.DateTimeField()
 
     def __str__(self):
-        return f"mailVerification for {self.user.email}"
+        return f"EmailVerification for {self.user.email}"
 
     def send_verification_email(self):
         link = reverse("email_verification", args=(self.user.email, self.code,))
@@ -29,7 +30,7 @@ class EmailVerification(models.Model):
         send_mail(
             subject=title,
             message=message,
-            from_email="from@example.com",
+            from_email=settings.EMAIL_HOST_USER,
             recipient_list=[self.user.email],
             fail_silently=False,
         )
