@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "debug_toolbar",
+
     "products.apps.ProductsConfig",
     "users.apps.UsersConfig",
 ]
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "shop.urls"
@@ -72,15 +75,42 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "shop.wsgi.application"
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+    "localhost",
+]
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": "",
+#         "USER": "",
+#         "PASSWORD": "",
+#         "HOST": "",
+#         'PORT': "",
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -136,8 +166,13 @@ LOGOUT_REDIRECT_URL = "/"
 # EMAIL_HOST_PASSWORD = ""
 # EMAIL_USE_TLS = ""
 # EMAIL_USE_SSL = ""
-# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
+
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 # For develop. In production use real smtp server
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# Celery
+CELERY_BROKER_URL = "redis://127.0.0.1:6379"
+CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379"
