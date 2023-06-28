@@ -23,7 +23,9 @@
 
 <h3>Запуск: </h3>
 <ul>
-  <li>Конфигурация баз данных в файле settings.py (PostgreSQL, Redis)</li>
-  <li>Установка зависимостей: pip install -r requirements.txt</li>
-  <li>Запуск тестового веб сервера: python manage.py runserver</li>
+    <li>Установка зависимостей: pip install -r requirements.txt</li>
+    <li>Конфигурация баз данных в файле settings.py (PostgreSQL, Redis)</li>
+    <li>Создание миграций: python manage.py makemigrations</li>
+    <li>Применение миграций: python manage.py migrate</li>
+    <li>Запуск тестового веб сервера: python manage.py runserver</li>
 </ul>
