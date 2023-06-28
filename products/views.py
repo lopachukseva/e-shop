@@ -8,7 +8,7 @@ from products.models import ProductCategory, Product, Basket
 
 class IndexView(TitleMixin, TemplateView):
     template_name = "products/index.html"
-    title = "Store"
+    title = "Аудиотехника"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,7 +21,7 @@ class ProductsListView(TitleMixin, ListView):
     context_object_name = "products"
     title = "Каталог"
 
-    paginate_by = 3
+    paginate_by = 6
 
     def get_queryset(self):
         queryset = super().get_queryset()
