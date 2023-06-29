@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.humanize",
     "debug_toolbar",
 
     "products.apps.ProductsConfig",
+    "orders.apps.OrdersConfig",
     "users.apps.UsersConfig",
 ]
 
@@ -100,17 +102,16 @@ CACHES = {
 #     }
 # }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": "",
-#         "USER": "",
-#         "PASSWORD": "",
-#         "HOST": "",
-#         'PORT': "",
-#     }
-# }
-
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "",
+        "USER": "",
+        "PASSWORD": "",
+        "HOST": "",
+        'PORT': "",
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
