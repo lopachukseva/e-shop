@@ -27,5 +27,6 @@
     <li>Конфигурация баз данных в файле settings.py (PostgreSQL, Redis)</li>
     <li>Создание миграций: python manage.py makemigrations</li>
     <li>Применение миграций: python manage.py migrate</li>
+    <li>Запуск Celery: celery -A shop worker -l INFO</li>
     <li>Запуск тестового веб сервера: python manage.py runserver</li>
 </ul>
