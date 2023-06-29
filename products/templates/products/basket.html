@@ -1,3 +1,4 @@
+{% load humanize %}
 {% if basket %}
 
 
@@ -18,7 +19,7 @@
                     <input name="basketID" type="number" class="form-control"
                            value="{{ item.quantity }}" min="0">
                 </div>
-                <div class="col-lg-4">{{ item.sum }}</div>
+                <div class="col-lg-4">{{ item.sum|intcomma }}</div>
                 <div class="col-lg-4">
                     <a href="{% url 'basket_remove' item.id %}">
                         <i class="fas fa-trash"></i>
@@ -32,10 +33,10 @@
 <div class="card mb-3">
     <div class="card-footer">
         <p class="float-left">Итого</p>
-        <h4 class="float-right">{{ basket.total_sum }} руб.</h4>
+        <h4 class="float-right">{{ basket.total_sum|intcomma }} руб.</h4>
     </div>
 </div>
-<a class="btn btn-success btn-lg float-right" href="../orders/order-create.html">
+<a class="btn btn-success btn-lg float-right" href="{% url 'order_create' %}">
     Оформить заказ
 </a>
 
