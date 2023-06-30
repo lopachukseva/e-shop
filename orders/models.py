@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import User
+from products.models import Basket
 
 
 class Order(models.Model):
@@ -25,3 +26,13 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order #{self.id}, {self.first_name} {self.last_name}"
+
+    def update_after_success(self):
+        basket = Basket.objects.filter(user=self.initiator)
+        # self.status = self.PAID
+        self.basket_history = {
+            "purchased_items": [basket_el.to_json() for basket_el in basket],
+            "total_sum": float(basket.total_sum()),
+        }
+        basket.delete()
+        self.save()
