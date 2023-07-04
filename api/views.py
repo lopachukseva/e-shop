@@ -23,11 +23,6 @@ class ProductCategoryListAPIView(ListAPIView):
     queryset = ProductCategory.objects.all()
     serializer_class = ProductCategorySerializer
 
-    def get_permissions(self):
-        if self.action in ("create", "update", "destroy"):
-            self.permission_classes = (IsAdminUser,)
-        return super().get_permissions()
-
 
 class BasketModelViewSet(ModelViewSet):
     queryset = Basket.objects.all()
