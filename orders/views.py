@@ -1,9 +1,10 @@
-from django.views.generic.edit import CreateView
-from django.views.generic.detail import DetailView
-from django.views.generic.list import ListView
-from django.views.generic.base import TemplateView
 from django.shortcuts import HttpResponseRedirect
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse, reverse_lazy
+from django.views.generic.base import TemplateView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from django.views.generic.list import ListView
+
 from common.views import TitleMixin
 from orders.forms import OrderForm
 from orders.models import Order

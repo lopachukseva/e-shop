@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     "debug_toolbar",
+    "rest_framework",
+    "rest_framework.authtoken",
 
     "products.apps.ProductsConfig",
     "orders.apps.OrdersConfig",
     "users.apps.UsersConfig",
+    "api.apps.ApiConfig",
 ]
 
 MIDDLEWARE = [
@@ -101,7 +104,8 @@ CACHES = {
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
-
+#
+#
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -112,6 +116,7 @@ DATABASES = {
         'PORT': "",
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -177,3 +182,12 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # Celery
 CELERY_BROKER_URL = "redis://127.0.0.1:6379"
 CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379"
+
+# REST FRAMEWORK
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 3,
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+}
